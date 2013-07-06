@@ -31,7 +31,7 @@ TANK.registerComponent("RenderManager")
     //check for a rederable interface
     if (component.interfaces["Renderable"])
     {
-      this._scene.add(component.GetRenderable());
+      this._scene.add(component.getRenderable());
     }
 
     //check for a camera interface
@@ -47,7 +47,7 @@ TANK.registerComponent("RenderManager")
     //check for a rederable interface
     if (component.interfaces["Renderable"])
     {
-      this._scene.remove(component.GetRenderable());
+      this._scene.remove(component.getRenderable());
     }
 
     //check for a camera interface
