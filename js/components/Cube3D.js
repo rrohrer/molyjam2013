@@ -1,4 +1,4 @@
-var 3dCubeMeshData = new THREE.CubeGeometry(1,1,1);
+Cube3DMeshData = new THREE.CubeGeometry(1,1,1);
 
 TANK.registerComponent("Cube3D")
 
@@ -10,11 +10,8 @@ TANK.registerComponent("Cube3D")
 {
   //default material
   this._material = new THREE.MeshPhongMaterial();
-  this._renderable = new THREE.Mesh(3dCubeMeshData, this._material);
-})
+  this._renderable = new THREE.Mesh(Cube3DMeshData, this._material);
 
-initialize(function ()
-{
   this.getRenderable = function ()
   {
     return this._renderable;
@@ -23,6 +20,8 @@ initialize(function ()
   this.setColor = function (color)
   {
     this._material.color = new THREE.Color(color);
+    this._material.ambient = new THREE.Color(color);
+    this._material.needsUpdate = true;
   }
 
   this.onTransform = function (pos3D)
@@ -36,3 +35,8 @@ initialize(function ()
     this._renderable.rotation.z = pos3D.zRotation;
   }
 })
+
+.initialize(function ()
+{
+
+});

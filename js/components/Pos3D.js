@@ -14,7 +14,7 @@ TANK.registerComponent("Pos3D")
     this.x = x;
     this.y = y;
     this.z = z;
-    this.parent.invoke(onTransform, this);
+    this.parent.invoke("onTransform", this);
   }
 
   this.addPosition = function (x,y,z)
@@ -22,7 +22,7 @@ TANK.registerComponent("Pos3D")
     this.x += x;
     this.y += y;
     this.z += z;
-    this.parent.invoke(onTransform, this);
+    this.parent.invoke("onTransform", this);
   }
 
   this.setRotation = function (x,y,z)
@@ -30,7 +30,7 @@ TANK.registerComponent("Pos3D")
     this.xRotation = x;
     this.yRotation = y;
     this.zRotation = z;
-    this.parent.invoke(onTransform, this);
+    this.parent.invoke("onTransform", this);
   }
 
   this.addRotation = function (x,y,z)
@@ -38,6 +38,6 @@ TANK.registerComponent("Pos3D")
     this.xRotation += x;
     this.yRotation += y;
     this.zRotation += z;
-    this.parent.invoke(onTransform, this);
+    this.parent.invoke("onTransform", this);
   }
 });
