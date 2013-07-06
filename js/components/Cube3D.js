@@ -24,4 +24,15 @@ initialize(function ()
   {
     this._material.color = new THREE.Color(color);
   }
+
+  this.onTransform = function (pos3D)
+  {
+    this._renderable.position.x = pos3D.x;
+    this._renderable.position.y = pos3D.y;
+    this._renderable.position.z = pos3D.z;
+
+    this._renderable.rotation.x = pos3D.xRotation;
+    this._renderable.rotation.y = pos3D.yRotation;
+    this._renderable.rotation.z = pos3D.zRotation;
+  }
 })
