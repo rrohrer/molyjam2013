@@ -9,5 +9,8 @@ TANK.registerComponent("Camera")
 
 .initialize(function ()
 {
-
+  this.addEventListener("OnEnterFrame", function ()
+  {
+    this._camera.position.z = 5;
+  });
 });
