@@ -12,10 +12,6 @@ TANK.registerComponent("RenderManager")
   this._renderer.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
   document.body.appendChild(this._renderer.domElement);
 
-  this.testMesh = new THREE.CubeGeometry(1,1,1);
-  this.material = new THREE.MeshBasicMaterial({color: 0x00ff00});
-  this.cube = new THREE.Mesh(this.testMesh, this.material);
-  this._scene.add(this.cube);
 })
 
 .initialize(function ()
@@ -23,9 +19,6 @@ TANK.registerComponent("RenderManager")
   //update function for the renderer
   this.addEventListener("OnEnterFrame", function (dt)
   {
-    this.cube.rotation.x += 0.1;
-    this.cube.rotation.y += 0.1;
-
     if (this._activeCamera)
     {
       this._renderer.render(this._scene, this._activeCamera._camera);
@@ -36,6 +29,10 @@ TANK.registerComponent("RenderManager")
   this.addEventListener("OnComponentInitialized", function (component)
   {
     //check for a rederable interface
+    if (component.interfaces["Renderable"])
+    {
+      this._scene.add(component.GetRenderable());
+    }
 
     //check for a camera interface
     if (component.interfaces["THREECamera"])
@@ -48,6 +45,10 @@ TANK.registerComponent("RenderManager")
   this.addEventListener("OnComponentUninitialized", function (component)
   {
     //check for a rederable interface
+    if (component.interfaces["Renderable"])
+    {
+      this._scene.remove(component.GetRenderable());
+    }
 
     //check for a camera interface
     if (component.interfaces["THREECamera"])
