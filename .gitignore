@@ -40,3 +40,4 @@ Thumbs.db
 
 #ignore all of tank.js
 tank/*
+three/*

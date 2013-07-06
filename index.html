@@ -12,28 +12,20 @@
 
     <!-- Include additional engine components here -->
     <script src="tank/components/InputManager.js"></script>
-    <script src="tank/components/RenderManager.js"></script>
-    <script src="tank/components/CollisionManager.js"></script>
-    <script src="tank/components/Collider.js"></script>
-    <script src="tank/components/ColoredBox.js"></script>
-    <script src="tank/components/Text.js"></script>
-    <script src="tank/components/Health.js"></script>
-    <script src="tank/components/Image.js"></script>
-    <script src="tank/components/Pos2D.js"></script>
-    <script src="tank/components/Velocity.js"></script>
-    <script src="tank/components/ObjectSpawner.js"></script>
-    <script src="tank/components/DeleteOnCollide.js"></script>
-    <script src="tank/components/DeleteOutOfBounds.js"></script>
-    <script src="tank/components/TopDownMovement.js"></script>
-    <script src="tank/components/RotateController.js"></script>
 
     <!-- Include your game specific files here -->
-    <script src=""></script>
+    <script src="three/three.min.js"></script>
+    <script src="js/components/RenderManager.js"></script>
 
   </head>
   <body>
     <style>
       #stage
+      {
+
+      }
+
+      #canvas
       {
         width: 640;
         height: 480;
@@ -45,22 +37,10 @@
         margin: auto;
         display: block;
       }
-
-      #stage canvas
-      {
-        position: absolute;
-        left: 0;
-        top: 0;
-        cursor: none;
-      }
     </style>
 
     <script type="text/javascript">
     window.addEventListener("load", main);
     </script>
-
-    <div id="stage">
-      <canvas id="screen" width='640' height='480'></canvas>
-    </div>
   </body>
 </html>
