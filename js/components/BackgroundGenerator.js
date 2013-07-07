@@ -27,7 +27,7 @@ TANK.registerComponent("BackgroundGenerator")
       for (var z = 0; z < this._height; z++)
       {
         var cube = TANK.createEntity().addComponents("Cube3D");
-        cube.Cube3D.setColor("rgb(255,100,0)");
+        cube.Cube3D.setColor("rgb(255,136,16)");
 
         cube.Pos3D.x = this.parent.Pos3D.x - Math.floor(0.5 * this._width * this._spacing) + x * this._spacing;
         cube.Pos3D.z = this.parent.Pos3D.z - Math.floor(0.5 * this._height * this._spacing) + z * this._spacing;

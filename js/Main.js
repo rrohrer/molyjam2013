@@ -10,7 +10,7 @@ function main()
   TANK.Game.addEntity(bg);
 
   var player = TANK.createEntity().addComponents("Player, Cube3D");
-  player.Cube3D.setColor("rgb(0,0,255)");
+  player.Cube3D.setColor("rgb(24,152,255)");
   TANK.Game.addEntity(player,"Player");
 
 
