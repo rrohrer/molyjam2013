@@ -11,6 +11,17 @@ TANK.registerComponent("Camera")
 {
   this.addEventListener("OnEnterFrame", function ()
   {
-    this._camera.position.z = 5;
+    var player = TANK.Game.getEntity("Player")
+    if (player)
+    {
+      var curPos = this._camera.position.x;
+      var targetPos = player.Pos3D.x - 4;
+      var positionDif = 0.1 * (targetPos - curPos);
+      this._camera.position.x = curPos + positionDif;
+      this._camera.position.y = player.Pos3D.y + 10;
+      this._camera.position.z = player.Pos3D.z - 1;
+
+      this._camera.lookAt(new THREE.Vector3(player.Pos3D.x, player.Pos3D.y, player.Pos3D.z));
+    }
   });
 });

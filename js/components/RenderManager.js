@@ -13,12 +13,12 @@ TANK.registerComponent("RenderManager")
   document.body.appendChild(this._renderer.domElement);
 
   //hack for ambient light
-  this._ambient = new THREE.AmbientLight( 0x404040 );
+  this._ambient = new THREE.AmbientLight(0x202020);
   this._scene.add(this._ambient);
-  this._point = new THREE.PointLight(0xffffff, 1, 20);
-  this._point.position.x = 5;
-  this._point.position.y = 5;
-  this._scene.add(this._point);
+  this._direction = new THREE.DirectionalLight(0xffffff);
+  this._direction.position.x = 20;
+  this._direction.position.y = 50;
+  this._scene.add(this._direction);
 })
 
 .initialize(function ()
