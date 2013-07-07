@@ -11,6 +11,9 @@ TANK.registerComponent("Cube3D")
   //default material
   this._material = new THREE.MeshPhongMaterial();
   this._renderable = new THREE.Mesh(Cube3DMeshData, this._material);
+  this._renderable.frustumCulled = true;
+  this._renderable.castShadow = true;
+  this._renderable.receiveShadow = true;
 
   this.getRenderable = function ()
   {
