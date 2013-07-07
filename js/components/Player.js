@@ -13,5 +13,9 @@ TANK.registerComponent("Player")
     {
       this.parent.Pos3D.addPosition(1,0,0);
     }
+    if (key == TANK.DOWN_ARROW)
+    {
+      this.parent.Pos3D.addPosition(-1,0,0);
+    }
   })
 })
