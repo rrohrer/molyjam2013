@@ -99,6 +99,10 @@ TANK.registerComponent("BackgroundGenerator")
       {
         cube.Cube3D.setColor(ENEMY_BULLET_COLOR);
       }
+      else if (grid.GameGrid._grid[i]._gridType == GRID_ENEMY)
+      {
+        cube.Cube3D.setColor(ENEMY_COLOR);
+      }
 
       cube.invoke("onTransform", cube.Pos3D);
       this._dirtyTiles.push(i);

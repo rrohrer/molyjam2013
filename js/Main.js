@@ -18,6 +18,7 @@ function main()
   TANK.Game.addEntity(player,"Player");
 
   TANK.Game.addEntity(TANK.createEntity().addComponents("ReflectorGenerator"));
+  TANK.Game.addEntity(TANK.createEntity().addComponents("EnemySpawner"));
 
   TANK.start();
 }
