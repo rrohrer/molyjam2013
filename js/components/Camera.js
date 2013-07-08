@@ -15,11 +15,13 @@ TANK.registerComponent("Camera")
 {
   this.addEventListener("OnEnterFrame", function ()
   {
-    var player = TANK.Game.getEntity("Player")
-    if (player)
+    var player = TANK.Game.getEntity("Player");
+    var BG = TANK.Game.getEntity("BG");
+    if (player && BG)
     {
+      var spacing = BG.BackgroundGenerator._spacing;
       var curPosX = this._camera.position.x;
-      var targetPosX = player.Pos3D.x - 4;
+      var targetPosX = player.Pos3D.x * spacing - 4;
       var positionDifX = this._moveSpeed * (targetPosX - curPosX);
 
       var curPosY = this._camera.position.y;
@@ -27,16 +29,16 @@ TANK.registerComponent("Camera")
       var positionDifY = this._moveSpeed * (targetPosY - curPosY);
 
       var curPosZ = this._camera.position.z;
-      var targetPosZ = player.Pos3D.z - 0.5;
+      var targetPosZ = player.Pos3D.z * spacing - 0.5;
       var positionDifZ = this._moveSpeed * (targetPosZ - curPosZ);
 
       this._camera.position.x = curPosX + positionDifX;
       this._camera.position.y = curPosY + positionDifY;
       this._camera.position.z = curPosZ + positionDifZ;
 
-      var targetXDif = (player.Pos3D.x - this.targetX) * this._moveSpeed;
+      var targetXDif = (player.Pos3D.x * spacing - this.targetX) * this._moveSpeed;
       var targetYDif = (player.Pos3D.y - this.targetY) * this._moveSpeed;
-      var targetZDif = (player.Pos3D.z - this.targetZ) * this._moveSpeed;
+      var targetZDif = (player.Pos3D.z * spacing - this.targetZ) * this._moveSpeed;
 
       this.targetX = this.targetX + targetXDif;
       this.targetY = this.targetY + targetYDif;

@@ -19,12 +19,12 @@ TANK.registerComponent("RenderManager")
   this._renderer.shadowCameraFov = 50;
 
   this._renderer.shadowMapBias = 0.0039;
-  this._renderer.shadowMapDarkness = 0.5;
+  this._renderer.shadowMapDarkness = 0.0;
   this._renderer.shadowMapWidth = 1024;
   this._renderer.shadowMapHeight = 1024;
 
   //hack for ambient light
-  this._ambient = new THREE.AmbientLight(0x202020);
+  this._ambient = new THREE.AmbientLight(0x404040);
   this._scene.add(this._ambient);
   this._direction = new THREE.DirectionalLight(0xffffff);
   this._direction.position.x = 60;

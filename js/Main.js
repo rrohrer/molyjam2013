@@ -7,12 +7,14 @@ function main()
   TANK.Game.InputManager.context = document.body.lastChild;
 
   var bg = TANK.createEntity().addComponents("BackgroundGenerator");
-  TANK.Game.addEntity(bg);
+  TANK.Game.addEntity(bg,"BG");
 
-  var player = TANK.createEntity().addComponents("Player, Cube3D");
-  player.Cube3D.setColor("rgb(24,152,255)");
+  TANK.Game.addEntity(TANK.createEntity().addComponents("GameGrid"), "Grid");
+
+  var player = TANK.createEntity().addComponents("Player, GridObject, Pos3D");
+  //player.Cube3D.setColor(PLAYER_COLOR);
+  player.GridObject._gridType = GRID_PLAYER;
   TANK.Game.addEntity(player,"Player");
-
 
   TANK.start();
 }
