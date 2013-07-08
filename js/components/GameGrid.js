@@ -44,7 +44,15 @@ TANK.registerComponent("GameGrid")
       }
       else
       {
-        //there was a collision
+        //there was a collision, notify the objects
+        this._grid[index].parent.invoke("onCollision", this._objects[i].parent);
+        this._objects[i].parent.invoke("onCollision", this._grid[index].parent);
+
+        //draw the one with higher priority
+        if (this._grid[index]._gridType < this._objects[i]._gridType)
+        {
+          this._grid[index] = this._objects[i];
+        }
       }
     }
   });

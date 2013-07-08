@@ -5,6 +5,8 @@ TANK.registerComponent("Player")
   this._bulletSpeed = 10;
   this._movementVelocity = [0,0];
   this._movementSpeed = 8;
+  this._numActiveBullets = 0;
+
   this.fireBullet = function (vel)
   {
     var bullet = TANK.createEntity().addComponents("Bullet");
@@ -13,6 +15,7 @@ TANK.registerComponent("Player")
     bullet.Pos2D.y = this.parent.Pos3D.z;
     bullet.GridObject._gridType = GRID_PLAYER_BULLET;
     TANK.Game.addEntity(bullet);
+    this._numActiveBullets++;
   }
 })
 
@@ -94,5 +97,10 @@ TANK.registerComponent("Player")
     if (pos.x <= 0) pos.setPosition(0, pos.y, pos.z);
     if (pos.z > this._height - 1) pos.setPosition(pos.x, pos.y, this._height - 1);
     if (pos.z <= 0) pos.setPosition(pos.x, pos.y, 0);
+
+    //update the bullet color
+    var color = Math.floor(Math.min(30 + this._numActiveBullets * 20, 255));
+
+    PLAYER_BULLET_COLOR = "rgb(" + color.toString() + ",255," + color.toString() + ")";
   });
 })
