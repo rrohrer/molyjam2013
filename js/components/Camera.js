@@ -5,7 +5,7 @@ TANK.registerComponent("Camera")
 .construct(function ()
 {
   this._camera = new THREE.PerspectiveCamera(75, WINDOW_WIDTH / WINDOW_HEIGHT, 0.1, 1000.0);
-  this._moveSpeed = 0.1;
+  this._moveSpeed = 0.05;
   this.targetX = 0.0;
   this.targetY = 0.0;
   this.targetZ = 0.0;

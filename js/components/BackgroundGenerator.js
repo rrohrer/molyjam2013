@@ -7,7 +7,7 @@ TANK.registerComponent("BackgroundGenerator")
   this._tiles = [];
   this._width = 30;
   this._height = 30;
-  this._spacing = 1.5;
+  this._spacing = 1.2;
   this._minDepth = -0.2;
   this._maxDepth = -10.0;
   this._waveLengthW = 2.0;
@@ -86,6 +86,10 @@ TANK.registerComponent("BackgroundGenerator")
       if (grid.GameGrid._grid[i]._gridType == GRID_PLAYER)
       {
         cube.Cube3D.setColor(PLAYER_COLOR);
+      }
+      else if (grid.GameGrid._grid[i]._gridType == GRID_PLAYER_BULLET)
+      {
+        cube.Cube3D.setColor(PLAYER_BULLET_COLOR);
       }
 
       cube.invoke("onTransform", cube.Pos3D);

@@ -32,6 +32,10 @@ TANK.registerComponent("GameGrid")
     {
       var xpos = Math.floor(this._objects[i].parent.Pos2D.x);// + (this._width * 0.5));
       var zpos = Math.floor(this._objects[i].parent.Pos2D.y);// + (this._height * 0.5));
+      if (xpos > this._width - 1) continue;
+      if (xpos < 0) continue;
+      if (zpos > this._height - 1) continue;
+      if (zpos < 0) continue;
       var index = xpos * this._width + zpos;
       //check to see if there is already something in the grid here
       if (this._grid[index] === GRID_EMPTY_TILE)
