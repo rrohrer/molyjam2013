@@ -16,6 +16,12 @@ TANK.registerComponent("Bullet")
       var player = TANK.Game.getEntity("Player").Player;
       player._numActiveBullets--;
     }
+    if (entity.GridObject._gridType == GRID_ENEMY && this.parent.GridObject._gridType == GRID_PLAYER_BULLET)
+    {
+      TANK.Game.removeEntity(this.parent.id);
+      var player = TANK.Game.getEntity("Player").Player;
+      player._numActiveBullets--;
+    }
   }
 })
 .initialize(function ()

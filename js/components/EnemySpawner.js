@@ -1,8 +1,8 @@
 TANK.registerComponent("EnemySpawner")
 .construct(function ()
 {
-  this._numEnemies = 6;
-
+  this._numEnemies = 5;
+  this._timeSinceEnemies = 0.0;
   this.placeEnemies = function ()
   {
     for (var i = 0; i < this._numEnemies; i++)
@@ -13,6 +13,7 @@ TANK.registerComponent("EnemySpawner")
 
       TANK.Game.addEntity(enemy);
     }
+    this._timeSinceEnemies = 0.0;
   }
 })
 
@@ -25,4 +26,13 @@ TANK.registerComponent("EnemySpawner")
   this._height = grid.GameGrid._height;
 
   this.placeEnemies();
+
+  this.addEventListener("OnEnterFrame", function (dt)
+  {
+    this._timeSinceEnemies += dt;
+    if (this._timeSinceEnemies > 20)
+    {
+      this.placeEnemies();
+    }
+  })
 })

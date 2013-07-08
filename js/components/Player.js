@@ -6,6 +6,8 @@ TANK.registerComponent("Player")
   this._movementVelocity = [0,0];
   this._movementSpeed = 8;
   this._numActiveBullets = 0;
+  this._health = 3;
+  this._damageTimeout = 0.0;
 
   this.fireBullet = function (vel)
   {
@@ -14,8 +16,24 @@ TANK.registerComponent("Player")
     bullet.Pos2D.x = this.parent.Pos3D.x;
     bullet.Pos2D.y = this.parent.Pos3D.z;
     bullet.GridObject._gridType = GRID_PLAYER_BULLET;
+    bullet.Bullet._damage = Math.max(20 - this._numActiveBullets, 2);
     TANK.Game.addEntity(bullet);
     this._numActiveBullets++;
+  }
+
+  this.onCollision = function (entity)
+  {
+    //check to see if the player shot
+    if (entity.GridObject._gridType == GRID_ENEMY_BULLET && this._damageTimeout > 3.0)
+    {
+      this._damageTimeout = 0.0;
+      this._health--;
+      if (this._health < 0)
+      {
+        this._health = 3;
+        this.parent.Pos3D.setPosition(PLAYER_START[0], 0, PLAYER_START[1]);
+      }
+    }
   }
 })
 
@@ -87,6 +105,16 @@ TANK.registerComponent("Player")
 
   this.addEventListener("OnEnterFrame", function (dt)
   {
+    //update damage timeout
+    this._damageTimeout += dt;
+    if (this._health < 3 && this._damageTimeout < 3.0)
+    {
+      PLAYER_COLOR = PLAYER_DAMAGED_COLOR;
+    }
+    else
+    {
+      PLAYER_COLOR = PLAYER_NORMAL_COLOR;
+    }
     //update movement
     var pos = this.parent.Pos3D;
     pos.addPosition(this._movementVelocity[0]*dt, 0.0, this._movementVelocity[1] * dt);
